@@ -41,7 +41,7 @@ const fetchComments = async (taskId) => {
   try {
 
     const res = await axios.get(
-      `import.meta.env.VITE_API_URL/task-comments/${taskId}`
+      `${import.meta.env.VITE_API_URL}/task-comments/${taskId}`
     );
 
     setComments((prev) => ({

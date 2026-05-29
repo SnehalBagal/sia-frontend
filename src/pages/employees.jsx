@@ -74,7 +74,7 @@ await axios.post(
     const token = localStorage.getItem("token");
 
     await axios.put(
-      `import.meta.env.VITE_API_URL/employees/${employeeId}/inactive`,
+      `${import.meta.env.VITE_API_URL}/employees/${employeeId}/inactive`,
       null,
       {
         headers: {
@@ -106,7 +106,7 @@ const updateEmployee = async () => {
   };
   console.log(dataToSend);
   await axios.put(
-    `import.meta.env.VITE_API_URL/employees/${editingId}`,
+    `${import.meta.env.VITE_API_URL}/employees/${editingId}`,
     dataToSend,
     {
       headers: {
@@ -131,7 +131,7 @@ const deleteEmployee = async (employeeId) => {
   const token = localStorage.getItem("token");
 
   await axios.delete(
-    `import.meta.env.VITE_API_URL/employees/${employeeId}`,
+    `${import.meta.env.VITE_API_URL}/employees/${employeeId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`

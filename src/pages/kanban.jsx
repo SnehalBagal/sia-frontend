@@ -23,7 +23,7 @@ export default function Kanban() {
   try {
 
     await axios.put(
-      `import.meta.env.VITE_API_URL/update-task-status/${taskId}`,
+      `${import.meta.env.VITE_API_URL}/update-task-status/${taskId}`,
       null,
       {
         params: {

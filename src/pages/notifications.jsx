@@ -13,7 +13,7 @@ export default function Notifications() {
     const username = localStorage.getItem("username");
 
     const res = await axios.get(
-      `import.meta.env.VITE_API_URL/notifications/${username}`
+      `${import.meta.env.VITE_API_URL}/notifications/${username}`
     );
 
     setNotifications(res.data);
