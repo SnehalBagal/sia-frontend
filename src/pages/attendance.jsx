@@ -31,7 +31,11 @@ const res = await axios.get(
   }
 );
 
-      setRecords(res.data);
+      if (Array.isArray(res.data)) {
+  setRecords(res.data);
+} else {
+  setRecords([]);
+}
 
     } catch (err) {
 
@@ -107,24 +111,25 @@ const updateWorkReport = async (attendanceId, workReport) => {
 };
 
 
-const filteredRecords = records.filter((record) => {
+const filteredRecords = Array.isArray(records)
+  ? records.filter((record) => {
+      const nameMatch = record.username
+        ?.toLowerCase()
+        .includes(filterName.toLowerCase());
 
-  const nameMatch = record.username
-    ?.toLowerCase()
-    .includes(filterName.toLowerCase());
+      const recordDate = record.work_date;
 
-  const recordDate = record.work_date;
+      const fromMatch = fromDate
+        ? recordDate >= fromDate
+        : true;
 
-  const fromMatch = fromDate
-    ? recordDate >= fromDate
-    : true;
+      const toMatch = toDate
+        ? recordDate <= toDate
+        : true;
 
-  const toMatch = toDate
-    ? recordDate <= toDate
-    : true;
-
-  return nameMatch && fromMatch && toMatch;
-});
+      return nameMatch && fromMatch && toMatch;
+    })
+  : [];
 
 
 
