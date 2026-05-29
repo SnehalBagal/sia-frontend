@@ -59,7 +59,7 @@ const fetchComments = async (taskId) => {
 const addComment = async (taskId) => {
   try {
     await axios.post(
-      `${import.meta.env.VITE_API_URL}/add-comment",
+      `${import.meta.env.VITE_API_URL}/add-comment`,
       {
         task_id: taskId,
         comment: newComments[taskId],
