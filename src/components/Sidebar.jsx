@@ -86,18 +86,16 @@ const username = localStorage.getItem("username");
           Kanban
         </Link>
 
-        {
-  role === true && (
+        {role === "admin" && (
 
-    <Link
-      to="/employees"
-      style={{ color: "white" }}
-    >
-      Employees
-    </Link>
+  <Link
+    to="/employees"
+    style={{ color: "white" }}
+  >
+    Employees
+  </Link>
 
-  )
-}
+)}
 
         <Link 
           to="/projects"  
