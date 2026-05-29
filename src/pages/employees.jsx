@@ -47,8 +47,8 @@ export default function Employees() {
 
       const token = localStorage.getItem("token");
 
-await axios.post(
-  `${import.meta.env.VITE_API_URL}/employees",
+     await axios.post(
+  `${import.meta.env.VITE_API_URL}/employees`,
   formData,
   {
     headers: {
