@@ -31,7 +31,11 @@ export default function Employees() {
       const res = await axios.get(
         `${import.meta.env.VITE_API_URL}/employees`
       );
-
+if (Array.isArray(res.data)) {
+  setEmployees(res.data);
+} else {
+  setEmployees([]);
+}
       setEmployees(res.data);
 
     } catch (err) {
@@ -298,7 +302,8 @@ const deleteEmployee = async (employeeId) => {
           <tbody>
 
             {
-              employees.map((employee) => (
+  Array.isArray(employees) &&
+  employees.map((employee) => (
 
                 <tr key={employee.id}>
 
