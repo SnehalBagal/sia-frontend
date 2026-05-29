@@ -23,11 +23,15 @@ export default function Tasks() {
         `${import.meta.env.VITE_API_URL}/tasks`
       );
 
-      setTasks(res.data);
+      const taskList = Array.isArray(res.data)
+  ? res.data
+  : [];
 
-      res.data.forEach((task) => {
-        fetchComments(task.id);
-      });
+setTasks(taskList);
+
+taskList.forEach((task) => {
+  fetchComments(task.id);
+});
 
     } catch (err) {
 
