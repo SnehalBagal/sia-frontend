@@ -16,7 +16,7 @@ export default function Files() {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/files`,
+      "https://sia-backend-production-4dcd.up.railway.app/files",
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -43,7 +43,7 @@ export default function Files() {
       formData.append("file", file);
 
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/upload-file`,
+        "https://sia-backend-production-4dcd.up.railway.app/upload-file",
         formData,
         {
           headers: {
@@ -73,7 +73,7 @@ export default function Files() {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/download-file/${fileId}`,
+      "https://sia-backend-production-4dcd.up.railway.app/download-file/${fileId}",
       {
         headers: {
           Authorization: `Bearer ${token}`

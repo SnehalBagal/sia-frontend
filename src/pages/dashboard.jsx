@@ -21,7 +21,7 @@ export default function Dashboard() {
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/tasks`
+        "https://sia-backend-production-4dcd.up.railway.app/tasks"
       );
 
       if (Array.isArray(res.data)) {
