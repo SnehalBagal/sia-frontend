@@ -29,7 +29,7 @@ export default function Employees() {
     try {
 
       const res = await axios.get(
-        "import.meta.env.VITE_API_URL/employees"
+        `${import.meta.env.VITE_API_URL}/employees"
       );
 
       setEmployees(res.data);
@@ -48,7 +48,7 @@ export default function Employees() {
       const token = localStorage.getItem("token");
 
 await axios.post(
-  "import.meta.env.VITE_API_URL/employees",
+  `${import.meta.env.VITE_API_URL}/employees",
   formData,
   {
     headers: {

@@ -21,7 +21,7 @@ export default function Dashboard() {
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        "import.meta.env.VITE_API_URL/tasks"
+        `${import.meta.env.VITE_API_URL}/tasks`
       );
 
       setTasks(res.data);

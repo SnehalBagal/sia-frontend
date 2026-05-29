@@ -14,7 +14,7 @@ export default function Files() {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      "import.meta.env.VITE_API_URL/files",
+      `${import.meta.env.VITE_API_URL}/files",
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -38,7 +38,7 @@ export default function Files() {
       formData.append("file", file);
 
       await axios.post(
-        "import.meta.env.VITE_API_URL/upload-file",
+        `${import.meta.env.VITE_API_URL}/upload-file",
         formData,
         {
           headers: {

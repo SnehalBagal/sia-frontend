@@ -17,7 +17,7 @@ export default function CreateTask() {
     try {
 
       await axios.post(
-        "import.meta.env.VITE_API_URL/create-task",
+        `${import.meta.env.VITE_API_URL}/create-task",
         {
           title,
           description,

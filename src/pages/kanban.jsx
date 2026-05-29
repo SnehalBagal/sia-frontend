@@ -11,7 +11,7 @@ export default function Kanban() {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("import.meta.env.VITE_API_URL/tasks");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/tasks`);
       setTasks(res.data);
     } catch (err) {
       console.log(err);
