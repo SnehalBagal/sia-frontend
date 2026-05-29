@@ -17,7 +17,7 @@ export default function CreateTask() {
     try {
 
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/create-task`,
+        "https://sia-backend-production-4dcd.up.railway.app/create-task",
         {
           title,
           description,
