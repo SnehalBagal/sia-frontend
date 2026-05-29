@@ -87,7 +87,7 @@ const username = localStorage.getItem("username");
         </Link>
 
         {
-  role === "admin" && (
+  role === true && (
 
     <Link
       to="/employees"
