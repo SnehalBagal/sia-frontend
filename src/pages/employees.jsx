@@ -82,17 +82,20 @@ export default function Employees() {
 
   try {
 
-    const token = localStorage.getItem("token");
+    const url =
+  "https://sia-backend-production-4dcd.up.railway.app/employees/" +
+  employeeId +
+  "/inactive";
 
-    await axios.put(
-      "https://sia-backend-production-4dcd.up.railway.app/employees/${employeeId}/inactive",
-      null,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    );
+await axios.put(
+  url,
+  null,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);
 
     alert("Employee marked inactive");
 
