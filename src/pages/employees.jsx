@@ -174,12 +174,6 @@ const updateEmployee = async () => {
 
 const deleteEmployee = async (employeeId) => {
 
-  if (!confirm("Are you sure you want to delete this employee?")) {
-    return;
-  }
-
-  const deleteEmployee = async (employeeId) => {
-
   if (!confirm("Delete employee?")) {
     return;
   }
@@ -201,12 +195,7 @@ const deleteEmployee = async (employeeId) => {
 
   alert("Employee deleted");
 
-  fetchEmployees();
-};
-
-  alert("Employee deleted");
-
-  fetchEmployees();
+  await fetchEmployees();
 };
 
   return (
