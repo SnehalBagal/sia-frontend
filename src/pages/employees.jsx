@@ -117,7 +117,7 @@ const updateEmployee = async () => {
   };
   console.log(dataToSend);
   await axios.put(
-    "https://sia-backend-production-4dcd.up.railway.app/employees/${editingId}",
+    `https://sia-backend-production-4dcd.up.railway.app/employees/${editingId}`,
     dataToSend,
     {
       headers: {
