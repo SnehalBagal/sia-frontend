@@ -145,31 +145,6 @@ const makeActive = async (employeeId) => {
   }
 };
 
-const deleteEmployee = async (employeeId) => {
-
-  if (!confirm("Are you sure you want to delete this employee?")) {
-    return;
-  }
-
-  const token = localStorage.getItem("token");
-
-  const url =
-    "https://sia-backend-production-4dcd.up.railway.app/employees/" +
-    employeeId;
-
-  await axios.delete(
-    url,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
-
-  alert("Employee deleted");
-
-  fetchEmployees();
-};
 
 const updateEmployee = async () => {
 
