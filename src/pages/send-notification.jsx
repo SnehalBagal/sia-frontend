@@ -10,10 +10,10 @@ export default function SendNotification() {
   const sendNotification = async () => {
   try {
     const payload = {
-      to_user: assigned_to || "admin5",
-      sender_name: localStorage.getItem("username") || "Unknown",
-      message: "Task assigned"
-    };
+  to_user: username,
+  sender_name: localStorage.getItem("username") || "Unknown",
+  message: message
+};
 
     console.log("Notification payload:", payload);
 
