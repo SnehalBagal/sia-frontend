@@ -48,8 +48,14 @@ export default function Notifications() {
             }}
           >
             <h3>{item.type}</h3>
-            <p>{item.message}</p>
-            <small>{item.created_at}</small>
+
+<p>
+  <b>From:</b> {item.sender_name || "Unknown"}
+</p>
+
+<p>{item.message}</p>
+
+<small>{item.created_at}</small>
           </div>
         ))}
       </div>
