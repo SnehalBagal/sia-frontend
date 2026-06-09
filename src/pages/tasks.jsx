@@ -104,19 +104,7 @@ const deleteTask = async (taskId) => {
   fetchTasks();
 };
 
-const deleteProject = async (projectId) => {
 
-  if (!window.confirm("Delete project?")) return;
-
-  await axios.delete(
-    "https://sia-backend-production-4dcd.up.railway.app/projects/" +
-      projectId
-  );
-
-  alert("Project deleted");
-
-  fetchProjects();
-};
 
   return (
 
@@ -293,20 +281,7 @@ const deleteProject = async (projectId) => {
                   Delete Task
                 </button>
 
-                <button
-                  onClick={() => deleteProject(project.id)}
-                  style={{
-                    marginTop: "10px",
-                    background: "gray",
-                    color: "white",
-                    border: "none",
-                    padding: "8px 12px",
-                    borderRadius: "5px",
-                    cursor: "pointer"
-                  }}
-                >
-                  Delete Project
-                </button>
+                
 
                 
               </div>

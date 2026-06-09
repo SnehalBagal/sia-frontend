@@ -57,6 +57,20 @@ export default function Projects() {
     }
   };
 
+  const deleteProject = async (projectId) => {
+
+  if (!window.confirm("Delete project?")) return;
+
+  await axios.delete(
+    "https://sia-backend-production-4dcd.up.railway.app/projects/" +
+      projectId
+  );
+
+  alert("Project deleted");
+
+  fetchProjects();
+};
+
   return (
 
     <div>
@@ -111,6 +125,21 @@ export default function Projects() {
           >
             Create Project
           </button>
+
+          <button
+                  onClick={() => deleteProject(project.id)}
+                  style={{
+                    marginTop: "10px",
+                    background: "gray",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                  }}
+                >
+                  Delete Project
+                </button>
 
         </div>
 
