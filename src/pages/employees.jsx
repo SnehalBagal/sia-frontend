@@ -31,12 +31,7 @@ export default function Employees() {
     );
 
     console.log("EMPLOYEES DATA:", res.data);
-
-    if (Array.isArray(res.data)) {
-      setEmployees(res.data);
-    } else {
-      setEmployees([]);
-    }
+    setEmployees(Array.isArray(res.data) ? res.data : []);
 
   } catch (err) {
     console.log("FETCH EMPLOYEES ERROR:", err.response?.data || err);
