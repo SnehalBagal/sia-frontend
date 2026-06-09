@@ -27,7 +27,7 @@ export default function Employees() {
   const fetchEmployees = async () => {
   try {
     const res = await axios.get(
-      "https://sia-backend-production-4dcd.up.railway.app/employees"
+      "https://sia-backend-production-4dcd.up.railway.app/all-employees"
     );
 
     console.log("EMPLOYEES DATA:", res.data);
