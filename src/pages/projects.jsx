@@ -9,7 +9,7 @@ export default function Projects() {
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
   const [createdBy, setCreatedBy] = useState("");
-
+ 
   useEffect(() => {
 
     fetchProjects();
@@ -32,6 +32,8 @@ export default function Projects() {
 
     }
   };
+
+  
 
   const createProject = async () => {
 
@@ -126,20 +128,7 @@ export default function Projects() {
             Create Project
           </button>
 
-          <button
-                  onClick={() => deleteProject(project.id)}
-                  style={{
-                    marginTop: "10px",
-                    background: "gray",
-                    color: "white",
-                    border: "none",
-                    padding: "8px 12px",
-                    borderRadius: "5px",
-                    cursor: "pointer"
-                  }}
-                >
-                  Delete Project
-                </button>
+          
 
         </div>
 
@@ -182,6 +171,21 @@ export default function Projects() {
                   {" "}
                   {project.status}
                 </p>
+
+                <button
+                  onClick={() => deleteProject(project.id)}
+                  style={{
+                    marginTop: "10px",
+                    background: "gray",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                  }}
+                >
+                  Delete Project
+                </button>
 
               </div>
             ))
