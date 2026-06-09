@@ -282,7 +282,7 @@ const deleteProject = async (projectId) => {
                   onClick={() => deleteTask(task.id)}
                   style={{
                     marginTop: "10px",
-                    background: "red",
+                    background: "gray",
                     color: "white",
                     border: "none",
                     padding: "8px 12px",
@@ -295,8 +295,17 @@ const deleteProject = async (projectId) => {
 
                 <button
                   onClick={() => deleteProject(project.id)}
+                  style={{
+                    marginTop: "10px",
+                    background: "gray",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                  }}
                 >
-                  Delete
+                  Delete Project
                 </button>
 
                 
