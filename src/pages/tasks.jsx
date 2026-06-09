@@ -90,6 +90,34 @@ const addComment = async (taskId) => {
   }
 };
 
+const deleteTask = async (taskId) => {
+
+  if (!window.confirm("Delete task?")) return;
+
+  await axios.delete(
+    "https://sia-backend-production-4dcd.up.railway.app/tasks/" +
+      taskId
+  );
+
+  alert("Task deleted");
+
+  fetchTasks();
+};
+
+const deleteProject = async (projectId) => {
+
+  if (!window.confirm("Delete project?")) return;
+
+  await axios.delete(
+    "https://sia-backend-production-4dcd.up.railway.app/projects/" +
+      projectId
+  );
+
+  alert("Project deleted");
+
+  fetchProjects();
+};
+
   return (
 
     <div>
@@ -250,6 +278,28 @@ const addComment = async (taskId) => {
                   {task.due_date}
                 </p>
 
+                <button
+                  onClick={() => deleteTask(task.id)}
+                  style={{
+                    marginTop: "10px",
+                    background: "red",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                  }}
+                >
+                  Delete Task
+                </button>
+
+                <button
+                  onClick={() => deleteProject(project.id)}
+                >
+                  Delete
+                </button>
+
+                
               </div>
             ))
           }
