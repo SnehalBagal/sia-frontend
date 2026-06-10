@@ -36,28 +36,31 @@ export default function Projects() {
   
 
   const createProject = async () => {
+  try {
+    const token = localStorage.getItem("token");
 
-    try {
-
-      await axios.post(
-        "https://sia-backend-production-4dcd.up.railway.app/create-project",
-        {
-          project_name: projectName,
-          description,
-          created_by: createdBy
+    await axios.post(
+      "https://sia-backend-production-4dcd.up.railway.app/create-project",
+      {
+        project_name: projectName,
+        description: description,
+        created_by: localStorage.getItem("username")
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-      );
+      }
+    );
 
-      alert("Project Created");
+    alert("Project Created");
+    fetchProjects();
 
-      fetchProjects();
-
-    } catch (err) {
-
-      console.log(err);
-
-    }
-  };
+  } catch (err) {
+    console.log("CREATE PROJECT ERROR:", err.response?.data || err);
+    alert("Error creating project");
+  }
+};
 
   const deleteProject = async (projectId) => {
 
