@@ -30,11 +30,12 @@ const fetchNotificationCount = async () => {
     const username = localStorage.getItem("username");
 
     const res = await axios.get(
-      "https://sia-backend-production-4dcd.up.railway.app/notifications/" +
-      username
-    );
+  "https://sia-backend-production-4dcd.up.railway.app/notifications/" +
+    username +
+    "/unread-count"
+);
 
-    setNotificationCount(res.data.length);
+setNotificationCount(res.data.count);
 
   } catch (err) {
     console.log(err);
