@@ -160,7 +160,7 @@ setNotificationCount(res.data.count);
 
         <Link to="/leave">Leave Management</Link>
 
-        <Link to="/event"
+        <Link to="/events"
         Style={{ colour: "white"}}
         >
           Event
