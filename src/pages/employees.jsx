@@ -16,7 +16,7 @@ export default function Employees() {
   department: "",
   designation: "",
   joining_date: "",
-  leaving_date: ""  
+  leaving_date: leaving_date || null,  
 });
 
   useEffect(() => {
