@@ -25,7 +25,7 @@ export default function Dashboard() {
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        "https://sia-backend-production-4dcd.up.railway.app/tasks"
+        "https://sia-backend-khcp.onrender.com/tasks"
       );
 
       if (Array.isArray(res.data)) {
@@ -67,7 +67,7 @@ const fetchTodayEvents = async () => {
   try {
 
     const res = await axios.get(
-      "https://sia-backend-production-4dcd.up.railway.app/today-events"
+      "https://sia-backend-khcp.onrender.com/today-events"
     );
 
     if (res.data.length > 0) {
