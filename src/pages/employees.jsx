@@ -45,9 +45,14 @@ export default function Employees() {
 
       const token = localStorage.getItem("token");
 
-     await axios.post(
+     const dataToSend = {
+  ...formData,
+  leaving_date: formData.leaving_date || null
+};
+
+await axios.post(
   "https://sia-backend-khcp.onrender.com/employees",
-  formData,
+  dataToSend,
   {
     headers: {
       Authorization: `Bearer ${token}`
@@ -138,7 +143,8 @@ const updateEmployee = async () => {
 
   const dataToSend = {
     ...formData,
-    password: formData.password || "nochange"
+    password: formData.password || "nochange",
+    leaving_date: formData.leaving_date || null
   };
   console.log(dataToSend);
   await axios.put(
