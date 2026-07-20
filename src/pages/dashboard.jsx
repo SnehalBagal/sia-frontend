@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import Confetti from "react-confetti";
 
 
 
@@ -25,7 +26,7 @@ export default function Dashboard() {
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        "https://sia-backend-production-4dcd.up.railway.app/tasks"
+        "https://sia-backend-khcp.onrender.com/tasks"
       );
 
       if (Array.isArray(res.data)) {
@@ -67,7 +68,7 @@ const fetchTodayEvents = async () => {
   try {
 
     const res = await axios.get(
-      "https://sia-backend-production-4dcd.up.railway.app/today-events"
+      "https://sia-backend-khcp.onrender.com/today-events"
     );
 
     if (res.data.length > 0) {
@@ -87,9 +88,164 @@ const fetchTodayEvents = async () => {
   }
 };
 
+const [popupEvents, setPopupEvents] = useState([]);
+const [showEventPopup, setShowEventPopup] = useState(false);
+useEffect(() => {
+  fetchPopupEvents();
+}, []);
+
+const fetchPopupEvents = async () => {
+  try {
+    const username = localStorage.getItem("username");
+
+    const res = await axios.get(
+      "https://sia-backend-khcp.onrender.com/popup-events/" +
+        username
+    );
+
+    if (res.data.length > 0) {
+      setPopupEvents(res.data);
+      setShowEventPopup(true);
+    }
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+
   return (
     <div>
       <Sidebar />
+
+      {showEventPopup && popupEvents.length > 0 && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.4)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999
+    }}
+  >
+    <div
+      style={{
+        background: "white",
+        width: "420px",
+        borderRadius: "12px",
+        padding: "25px",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
+      }}
+    >
+      {popupEvents.map((event) => (
+        <div key={event.id}>
+          {event.event_type === "Birthday" ? (
+            <div
+              style={{
+                background:
+                  "linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb)",
+                borderRadius: "20px",
+                padding: "30px",
+                color: "#333"
+              }}
+            >
+              <Confetti
+                recycle={false}
+                numberOfPieces={350}
+                width={window.innerWidth}
+                height={window.innerHeight}
+              />
+
+              <h1 style={{ marginBottom: "10px" }}>
+                🎉 HAPPY BIRTHDAY 🎉
+              </h1>
+
+              <h2 style={{ marginBottom: "15px" }}>
+                🎂 {event.title} 🎂
+              </h2>
+
+              <p style={{ fontSize: "18px", lineHeight: 1.6 }}>
+                Wishing you a wonderful birthday filled with happiness,
+                success, and lots of joy!
+              </p>
+
+              <div style={{ fontSize: "45px", marginTop: "20px" }}>
+                🎂 🎁 🎉 🥳 🎈 🎊
+              </div>
+            </div>
+          ) : (
+            <div
+              style={{
+                textAlign: "left",
+                padding: "20px"
+              }}
+            >
+              <h2 style={{ textAlign: "center" }}>
+                {event.event_type}
+              </h2>
+
+              <h3 style={{ textAlign: "center" }}>
+                {event.title}
+              </h3>
+
+              <p style={{ marginTop: "15px" }}>
+                {event.description}
+              </p>
+
+              <p
+                style={{
+                  marginTop: "10px",
+                  fontSize: "14px",
+                  color: "#555",
+                  textAlign: "center"
+                }}
+              >
+                📅 {event.event_date}
+              </p>
+            </div>
+          )}
+        </div>
+      ))}
+
+      
+
+      <button
+        onClick={async () => {
+          const username = localStorage.getItem("username");
+
+          for (const event of popupEvents) {
+            await axios.post(
+              "https://sia-backend-khcp.onrender.com/events/" +
+                event.id +
+                "/seen/" +
+                username
+            );
+          }
+
+          setShowEventPopup(false);
+        }}
+        style={{
+          marginTop: "20px",
+          width: "100%",
+          padding: "10px",
+          background: "#2563eb",
+          color: "white",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer"
+        }}
+      >
+        🎉 Close Greeting
+      </button>
+    </div>
+  </div>
+)}
 
       <div style={{ marginLeft: "260px", padding: "40px" }}>
         <h1>SIA Dashboard</h1>
