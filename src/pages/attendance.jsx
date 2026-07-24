@@ -4,8 +4,9 @@ import Sidebar from "../components/Sidebar";
 
 export default function Attendance() {
 
+  const role = localStorage.getItem("role");
   const [filterName, setFilterName] = useState("");
-    const [fromDate, setFromDate] = useState("");
+  const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
 
   const [records, setRecords] = useState([]);
@@ -227,7 +228,7 @@ const deleteAttendance = async (attendanceId) => {
             <th>Logout Time</th>
             <th>Total Hours</th>
             <th>Daily Work</th>
-            <th>Delete</th>
+            {role === "admin" && <th>Delete</th>}
           </tr>
         </thead>
 
@@ -254,20 +255,22 @@ const deleteAttendance = async (attendanceId) => {
                   }
                 />
               </td>
-              <td>
-                <button
-                  onClick={() => deleteAttendance(record.id)}
-                  style={{
-                  border: "none",
-                  background: "transparent",
-                  cursor: "pointer",
-                  fontSize: "20px"
-                }}
-                title="Delete attendance"
-              >
-                🗑️
-              </button>
-            </td>
+              {role === "admin" && (
+                <td>
+                  <button
+                    onClick={() => deleteAttendance(record.id)}
+                    style={{
+                      border: "none",
+                      background: "transparent",
+                      cursor: "pointer",
+                      fontSize: "20px"
+                    }}
+                    title="Delete attendance"
+                  >
+                    🗑️
+                  </button>
+                </td>
+              )}
 
             </tr>
           ))}
