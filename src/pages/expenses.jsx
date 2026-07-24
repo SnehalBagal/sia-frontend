@@ -14,8 +14,8 @@ export default function Expenses() {
   const [totalKm, setTotalKm] = useState("");
   const [amount, setAmount] = useState("");
   const [remarks, setRemarks] = useState("");
-
   const username = localStorage.getItem("username");
+  const role = localStorage.getItem("role");
   const role = localStorage.getItem("role");
 
   useEffect(() => {
@@ -75,6 +75,29 @@ export default function Expenses() {
     fetchExpenses();
 
   }
+
+
+  const updateStatus = async (expenseId, status) => {
+    try {
+        await axios.put(
+        `https://sia-backend-khcp.onrender.com/expenses/${expenseId}/status`,
+        null,
+        {
+            params: {
+            status: status
+            }
+        }
+        );
+
+        fetchExpenses();
+
+    } catch (err) {
+        console.log(err);
+        alert("Failed to update status");
+    }
+    };
+
+
 
   return (
 
@@ -198,7 +221,11 @@ export default function Expenses() {
 
               <th>Status</th>
 
-              <th>Delete</th>
+              {role === "Admin" && (
+                <th>Action</th>
+                )}
+
+                <th>Delete</th>
 
             </tr>
 
@@ -228,6 +255,23 @@ export default function Expenses() {
                 <td>{item.amount}</td>
 
                 <td>{item.status}</td>
+
+                {role === "Admin" && (
+                    <td>
+                        <button
+                        onClick={() => updateStatus(item.id, "Approved")}
+                        style={{ marginRight: "5px" }}
+                        >
+                        ✅
+                        </button>
+
+                        <button
+                        onClick={() => updateStatus(item.id, "Rejected")}
+                        >
+                        ❌
+                        </button>
+                    </td>
+                    )}
 
                 <td>
 
