@@ -29,7 +29,7 @@ export default function ProjectHandover() {
             borderRadius: "10px",
             marginTop: "20px"
           }}
-        >
+        >   
 
           <h2>Project Information</h2>
 
@@ -57,10 +57,51 @@ export default function ProjectHandover() {
             onChange={(e)=>setCompletionDate(e.target.value)}
           />
 
+        </div>   {/* Project Information ends here */}          
+
+        <div
+        style={{
+            border: "1px solid #ddd",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px"
+        }}
+        >
+
+        <h2>PLC Details</h2>
+
+        <select>
+            <option>Siemens</option>
+            <option>Allen Bradley</option>
+            <option>Mitsubishi</option>
+            <option>Schneider</option>
+            <option>Omron</option>
+            <option>Delta</option>
+            <option>Keyence</option>
+            <option>Other</option>
+        </select>
+
+        <input placeholder="PLC Model" />
+
+        <input placeholder="PLC IP Address" />
+
+        <input placeholder="PLC Password" />
+
         </div>
 
-      </div>
 
-    </div>
+        </div>
+
+        
+
+      </div>
+    
+
+
+
+    
+    
+
+
   );
 }
