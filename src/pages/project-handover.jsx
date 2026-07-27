@@ -87,6 +87,142 @@ export default function ProjectHandover() {
 
         <input placeholder="PLC Password" />
 
+        <input placeholder="PLC CPU Part Number" />
+
+        <input placeholder="PLC Firmware Version" />
+
+        <input placeholder="Rack / Slot" />
+
+        <input placeholder="PLC Serial Number" />
+
+
+        <div
+            style={{
+                border: "1px solid #ddd",
+                padding: "20px",
+                borderRadius: "10px",
+                marginTop: "20px"
+            }}
+            >
+
+            <h2>HMI Details</h2>
+
+            <select>
+                <option>Siemens</option>
+                <option>Weintek</option>
+                <option>Allen Bradley</option>
+                <option>Schneider</option>
+                <option>Delta</option>
+                <option>Pro-face</option>
+                <option>Other</option>
+            </select>
+
+            <input placeholder="HMI Model" />
+
+            <input placeholder="HMI IP Address" />
+
+            <input placeholder="HMI Password" />
+
+            <input placeholder="Project File Name" />
+
+
+        <div
+            style={{
+                border: "1px solid #ddd",
+                padding: "20px",
+                borderRadius: "10px",
+                marginTop: "20px"
+            }}
+                >
+
+            <h2>SCADA Details</h2>
+
+            <select>
+                <option>WinCC Professional</option>
+                <option>WinCC Unified</option>
+                <option>WinCC Flexible</option>
+                <option>FactoryTalk View</option>
+                <option>Ignition</option>
+                <option>Wonderware</option>
+                <option>Citect SCADA</option>
+                <option>AVEVA</option>
+                <option>Other</option>
+            </select>
+
+            <input placeholder="SCADA Version" />
+
+            <input placeholder="Runtime Username" />
+
+            <input placeholder="Runtime Password" />
+
+            <input placeholder="Project File Name" />
+
+
+        <div
+            style={{
+                border: "1px solid #ddd",
+                padding: "20px",
+                borderRadius: "10px",
+                marginTop: "20px"
+            }}
+            >
+
+            <h2>Communication Details</h2>
+
+            <label><input type="checkbox" /> Profinet</label><br />
+
+            <label><input type="checkbox" /> Profibus</label><br />
+
+            <label><input type="checkbox" /> Ethernet/IP</label><br />
+
+            <label><input type="checkbox" /> Modbus TCP</label><br />
+
+            <label><input type="checkbox" /> Modbus RTU</label><br />
+
+            <label><input type="checkbox" /> OPC UA</label><br />
+
+            <label><input type="checkbox" /> MQTT</label><br />
+
+            <label><input type="checkbox" /> CANopen</label><br />
+
+            <label><input type="checkbox" /> RS232</label><br />
+
+            <label><input type="checkbox" /> RS485</label><br />
+
+            <label><input type="checkbox" /> Other</label>
+
+        <div
+            style={{
+                border: "1px solid #ddd",
+                padding: "20px",
+                borderRadius: "10px",
+                marginTop: "20px"
+            }}
+            >
+
+            <h2>Network Configuration</h2>
+
+            <input placeholder="PLC IP Address" />
+
+            <input placeholder="HMI IP Address" />
+
+            <input placeholder="SCADA PC IP Address" />
+
+            <input placeholder="Gateway" />
+
+            <input placeholder="Subnet Mask" />
+
+            <input placeholder="DNS Server" />
+
+            </div>    
+        
+
+            </div>    
+
+            </div>
+
+            </div>
+
         </div>
 
 
@@ -96,12 +232,6 @@ export default function ProjectHandover() {
 
       </div>
     
-
-
-
-    
-    
-
 
   );
 }
