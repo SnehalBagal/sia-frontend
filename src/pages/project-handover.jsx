@@ -105,7 +105,7 @@ export default function ProjectHandover() {
             }}
             >
 
-            <h2>HMI Details</h2>
+        <h2>HMI Details</h2>
 
             <select>
                 <option>Siemens</option>
@@ -135,7 +135,7 @@ export default function ProjectHandover() {
             }}
                 >
 
-            <h2>SCADA Details</h2>
+        <h2>SCADA Details</h2>
 
             <select>
                 <option>WinCC Professional</option>
@@ -167,7 +167,7 @@ export default function ProjectHandover() {
             }}
             >
 
-            <h2>Communication Details</h2>
+        <h2>Communication Details</h2>
 
             <label><input type="checkbox" /> Profinet</label><br />
 
@@ -200,7 +200,7 @@ export default function ProjectHandover() {
             }}
             >
 
-            <h2>Network Configuration</h2>
+        <h2>Network Configuration</h2>
 
             <input placeholder="PLC IP Address" />
 
