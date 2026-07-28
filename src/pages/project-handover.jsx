@@ -60,17 +60,17 @@ export default function ProjectHandover() {
         </div>   {/* Project Information ends here */}          
 
         <div
-        style={{
-            border: "1px solid #ddd",
-            padding: "20px",
-            borderRadius: "10px",
-            marginTop: "20px"
-        }}
+            style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginTop: "15px"
+            }}
         >
 
         <h2>PLC Details</h2>
 
-        <select>
+        <select style={{ width: "220px" }}>
             <option>Siemens</option>
             <option>Allen Bradley</option>
             <option>Mitsubishi</option>
@@ -81,19 +81,22 @@ export default function ProjectHandover() {
             <option>Other</option>
         </select>
 
-        <input placeholder="PLC Model" />
+        <input style={{ width: "220px" }} placeholder="PLC Model" />
 
-        <input placeholder="PLC IP Address" />
+        <input style={{ width: "220px" }} placeholder="PLC IP Address" />
 
-        <input placeholder="PLC Password" />
+        <input style={{ width: "220px" }} placeholder="PLC Password" />
 
-        <input placeholder="PLC CPU Part Number" />
+        <input style={{ width: "220px" }} placeholder="PLC CPU Part Number" />
 
-        <input placeholder="PLC Firmware Version" />
+        <input style={{ width: "220px" }} placeholder="PLC Firmware Version" />
 
-        <input placeholder="Rack / Slot" />
+        <input style={{ width: "220px" }} placeholder="Rack / Slot" />
 
-        <input placeholder="PLC Serial Number" />
+        <input style={{ width: "220px" }} placeholder="PLC Serial Number" />
+
+        </div>
+        
 
         </div>   {/* PLC Details Ends */}
 
