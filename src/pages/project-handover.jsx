@@ -95,6 +95,8 @@ export default function ProjectHandover() {
 
         <input placeholder="PLC Serial Number" />
 
+        </div>   {/* PLC Details Ends */}
+
 
         <div
             style={{
@@ -124,6 +126,8 @@ export default function ProjectHandover() {
             <input placeholder="HMI Password" />
 
             <input placeholder="Project File Name" />
+
+            </div>   {/* HMI Details Ends */}
 
 
         <div
@@ -156,6 +160,8 @@ export default function ProjectHandover() {
             <input placeholder="Runtime Password" />
 
             <input placeholder="Project File Name" />
+
+            </div>   {/* SCADA Ends */}
 
 
         <div
@@ -191,6 +197,8 @@ export default function ProjectHandover() {
 
             <label><input type="checkbox" /> Other</label>
 
+            </div>   {/* Communication Ends */}
+
         <div
             style={{
                 border: "1px solid #ddd",
@@ -214,23 +222,25 @@ export default function ProjectHandover() {
 
             <input placeholder="DNS Server" />
 
+            </div>   {/* Network Ends */}
+
             </div>    
         
 
             </div>    
 
-            </div>
+       
 
-            </div>
-
-        </div>
-
-
-        </div>
+            
 
         
 
-      </div>
+
+        
+
+        
+
+      
     
 
   );
