@@ -29,20 +29,20 @@ export default function ProjectHandover() {
             borderRadius: "10px",
             marginTop: "20px"
           }}
-        >   
+        >
 
           <h2>Project Information</h2>
 
           <input
             placeholder="Project Name"
             value={projectName}
-            onChange={(e)=>setProjectName(e.target.value)}
+            onChange={(e) => setProjectName(e.target.value)}
           />
 
           <input
             placeholder="Customer Name"
             value={customerName}
-            onChange={(e)=>setCustomerName(e.target.value)}
+            onChange={(e) => setCustomerName(e.target.value)}
           />
 
           <input
@@ -54,197 +54,193 @@ export default function ProjectHandover() {
           <input
             type="date"
             value={completionDate}
-            onChange={(e)=>setCompletionDate(e.target.value)}
+            onChange={(e) => setCompletionDate(e.target.value)}
           />
 
-        </div>   {/* Project Information ends here */}          
+        </div>   {/* Project Information ends here */}
+
 
         <div
-            style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "15px",
-                marginTop: "15px"
-            }}
+          style={{
+            border: "1px solid #ddd",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px"
+          }}
         >
 
-        <h2>PLC Details</h2>
+          <h2>PLC Details</h2>
 
-        <select style={{ width: "220px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "15px",
+              marginTop: "15px"
+            }}
+          >
+
+            <select style={{ width: "220px" }}>
+              <option>Siemens</option>
+              <option>Allen Bradley</option>
+              <option>Mitsubishi</option>
+              <option>Schneider</option>
+              <option>Omron</option>
+              <option>Delta</option>
+              <option>Keyence</option>
+              <option>Other</option>
+            </select>
+
+            <input style={{ width: "220px" }} placeholder="PLC Model" />
+
+            <input style={{ width: "220px" }} placeholder="PLC IP Address" />
+
+            <input style={{ width: "220px" }} placeholder="PLC Password" />
+
+            <input style={{ width: "220px" }} placeholder="PLC CPU Part Number" />
+
+            <input style={{ width: "220px" }} placeholder="PLC Firmware Version" />
+
+            <input style={{ width: "220px" }} placeholder="Rack / Slot" />
+
+            <input style={{ width: "220px" }} placeholder="PLC Serial Number" />
+
+          </div>
+        </div>   {/* PLC Card Ends */}
+
+
+
+
+
+        <div
+          style={{
+            border: "1px solid #ddd",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px"
+          }}
+        >
+
+          <h2>HMI Details</h2>
+
+          <select>
             <option>Siemens</option>
+            <option>Weintek</option>
             <option>Allen Bradley</option>
-            <option>Mitsubishi</option>
             <option>Schneider</option>
-            <option>Omron</option>
             <option>Delta</option>
-            <option>Keyence</option>
+            <option>Pro-face</option>
             <option>Other</option>
-        </select>
+          </select>
 
-        <input style={{ width: "220px" }} placeholder="PLC Model" />
+          <input placeholder="HMI Model" />
 
-        <input style={{ width: "220px" }} placeholder="PLC IP Address" />
+          <input placeholder="HMI IP Address" />
 
-        <input style={{ width: "220px" }} placeholder="PLC Password" />
+          <input placeholder="HMI Password" />
 
-        <input style={{ width: "220px" }} placeholder="PLC CPU Part Number" />
+          <input placeholder="Project File Name" />
 
-        <input style={{ width: "220px" }} placeholder="PLC Firmware Version" />
-
-        <input style={{ width: "220px" }} placeholder="Rack / Slot" />
-
-        <input style={{ width: "220px" }} placeholder="PLC Serial Number" />
-
-        </div>
-        
-
-        </div>   {/* PLC Details Ends */}
+        </div>   {/* HMI Details Ends */}
 
 
         <div
-            style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                borderRadius: "10px",
-                marginTop: "20px"
-            }}
-            >
+          style={{
+            border: "1px solid #ddd",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px"
+          }}
+        >
 
-        <h2>HMI Details</h2>
+          <h2>SCADA Details</h2>
 
-            <select>
-                <option>Siemens</option>
-                <option>Weintek</option>
-                <option>Allen Bradley</option>
-                <option>Schneider</option>
-                <option>Delta</option>
-                <option>Pro-face</option>
-                <option>Other</option>
-            </select>
+          <select>
+            <option>WinCC Professional</option>
+            <option>WinCC Unified</option>
+            <option>WinCC Flexible</option>
+            <option>FactoryTalk View</option>
+            <option>Ignition</option>
+            <option>Wonderware</option>
+            <option>Citect SCADA</option>
+            <option>AVEVA</option>
+            <option>Other</option>
+          </select>
 
-            <input placeholder="HMI Model" />
+          <input placeholder="SCADA Version" />
 
-            <input placeholder="HMI IP Address" />
+          <input placeholder="Runtime Username" />
 
-            <input placeholder="HMI Password" />
+          <input placeholder="Runtime Password" />
 
-            <input placeholder="Project File Name" />
+          <input placeholder="Project File Name" />
 
-            </div>   {/* HMI Details Ends */}
-
-
-        <div
-            style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                borderRadius: "10px",
-                marginTop: "20px"
-            }}
-                >
-
-        <h2>SCADA Details</h2>
-
-            <select>
-                <option>WinCC Professional</option>
-                <option>WinCC Unified</option>
-                <option>WinCC Flexible</option>
-                <option>FactoryTalk View</option>
-                <option>Ignition</option>
-                <option>Wonderware</option>
-                <option>Citect SCADA</option>
-                <option>AVEVA</option>
-                <option>Other</option>
-            </select>
-
-            <input placeholder="SCADA Version" />
-
-            <input placeholder="Runtime Username" />
-
-            <input placeholder="Runtime Password" />
-
-            <input placeholder="Project File Name" />
-
-            </div>   {/* SCADA Ends */}
+        </div>   {/* SCADA Ends */}
 
 
         <div
-            style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                borderRadius: "10px",
-                marginTop: "20px"
-            }}
-            >
+          style={{
+            border: "1px solid #ddd",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px"
+          }}
+        >
 
-        <h2>Communication Details</h2>
+          <h2>Communication Details</h2>
 
-            <label><input type="checkbox" /> Profinet</label><br />
+          <label><input type="checkbox" /> Profinet</label><br />
 
-            <label><input type="checkbox" /> Profibus</label><br />
+          <label><input type="checkbox" /> Profibus</label><br />
 
-            <label><input type="checkbox" /> Ethernet/IP</label><br />
+          <label><input type="checkbox" /> Ethernet/IP</label><br />
 
-            <label><input type="checkbox" /> Modbus TCP</label><br />
+          <label><input type="checkbox" /> Modbus TCP</label><br />
 
-            <label><input type="checkbox" /> Modbus RTU</label><br />
+          <label><input type="checkbox" /> Modbus RTU</label><br />
 
-            <label><input type="checkbox" /> OPC UA</label><br />
+          <label><input type="checkbox" /> OPC UA</label><br />
 
-            <label><input type="checkbox" /> MQTT</label><br />
+          <label><input type="checkbox" /> MQTT</label><br />
 
-            <label><input type="checkbox" /> CANopen</label><br />
+          <label><input type="checkbox" /> CANopen</label><br />
 
-            <label><input type="checkbox" /> RS232</label><br />
+          <label><input type="checkbox" /> RS232</label><br />
 
-            <label><input type="checkbox" /> RS485</label><br />
+          <label><input type="checkbox" /> RS485</label><br />
 
-            <label><input type="checkbox" /> Other</label>
+          <label><input type="checkbox" /> Other</label>
 
-            </div>   {/* Communication Ends */}
+        </div>   {/* Communication Ends */}
 
         <div
-            style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                borderRadius: "10px",
-                marginTop: "20px"
-            }}
-            >
+          style={{
+            border: "1px solid #ddd",
+            padding: "20px",
+            borderRadius: "10px",
+            marginTop: "20px"
+          }}
+        >
 
-        <h2>Network Configuration</h2>
+          <h2>Network Configuration</h2>
 
-            <input placeholder="PLC IP Address" />
+          <input placeholder="PLC IP Address" />
 
-            <input placeholder="HMI IP Address" />
+          <input placeholder="HMI IP Address" />
 
-            <input placeholder="SCADA PC IP Address" />
+          <input placeholder="SCADA PC IP Address" />
 
-            <input placeholder="Gateway" />
+          <input placeholder="Gateway" />
 
-            <input placeholder="Subnet Mask" />
+          <input placeholder="Subnet Mask" />
 
-            <input placeholder="DNS Server" />
+          <input placeholder="DNS Server" />
 
-            </div>   {/* Network Ends */}
+        </div>   {/* Network Ends */}
 
-            </div>    
-        
+      </div>
 
-            </div>    
+</div>
 
-       
-
-            
-
-        
-
-
-        
-
-        
-
-      
-    
-
-  );
+);
 }
