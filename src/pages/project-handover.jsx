@@ -179,39 +179,46 @@ export default function ProjectHandover() {
 
 
         <div
-          style={{
-            border: "1px solid #ddd",
-            padding: "20px",
-            borderRadius: "10px",
-            marginTop: "20px"
-          }}
+            style={{
+                border: "1px solid #ddd",
+                padding: "20px",
+                borderRadius: "10px",
+                marginTop: "20px"
+            }}
         >
+            <h2>Communication Details</h2>
 
-          <h2>Communication Details</h2>
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "15px",
+                    marginTop: "15px"
+            }}
+            >
+            <label><input type="checkbox" /> Profinet</label>
 
-          <label><input type="checkbox" /> Profinet</label><br />
+            <label><input type="checkbox" /> Profibus</label>
 
-          <label><input type="checkbox" /> Profibus</label><br />
+            <label><input type="checkbox" /> Ethernet/IP</label>
 
-          <label><input type="checkbox" /> Ethernet/IP</label><br />
+            <label><input type="checkbox" /> Modbus TCP</label>
 
-          <label><input type="checkbox" /> Modbus TCP</label><br />
+            <label><input type="checkbox" /> Modbus RTU</label>
 
-          <label><input type="checkbox" /> Modbus RTU</label><br />
+            <label><input type="checkbox" /> OPC UA</label>
 
-          <label><input type="checkbox" /> OPC UA</label><br />
+            <label><input type="checkbox" /> MQTT</label>
 
-          <label><input type="checkbox" /> MQTT</label><br />
+            <label><input type="checkbox" /> CANopen</label>
 
-          <label><input type="checkbox" /> CANopen</label><br />
+            <label><input type="checkbox" /> RS232</label>
 
-          <label><input type="checkbox" /> RS232</label><br />
+            <label><input type="checkbox" /> RS485</label>
 
-          <label><input type="checkbox" /> RS485</label><br />
-
-          <label><input type="checkbox" /> Other</label>
-
-        </div>   {/* Communication Ends */}
+            <label><input type="checkbox" /> Other</label>
+        </div>
+        </div>
 
         <div
           style={{
