@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import ProjectHandoverList from "./ProjectHandoverList";
 
 export default function ProjectHandover() {
 
@@ -441,12 +442,14 @@ export default function ProjectHandover() {
 
           </div>
 
-          </div>
+            </div>
 
+          {/* Project Handover Records */}
+          <ProjectHandoverList />
 
       </div>
 
-</div>
+    </div>
 
 );
-}
+} 
