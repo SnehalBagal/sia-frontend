@@ -1,11 +1,12 @@
 import logo from "../assets/logo.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function ProjectHandoverReport() {
 
 
     const location = useLocation();
     const data = location.state || {};
+    const navigate = useNavigate();
 
     return (
 
@@ -455,15 +456,43 @@ export default function ProjectHandoverReport() {
 
             <br />
 
-            <button
-                onClick={() => window.print()}
+            <div
                 style={{
-                    padding: "12px 30px",
-                    cursor: "pointer"
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginTop: "30px"
                 }}
             >
-                Print PDF
-            </button>
+
+                <button
+                    onClick={() => navigate("/project-handover")}
+                    style={{
+                        padding: "12px 25px",
+                        background: "#6c757d",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer"
+                    }}
+                >
+                    ← Back to SIA
+                </button>
+
+                <button
+                    onClick={() => window.print()}
+                    style={{
+                        padding: "12px 25px",
+                        background: "#28a745",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer"
+                    }}
+                >
+                    🖨 Print / Save PDF
+                </button>
+
+            </div>
 
         </div>
 
