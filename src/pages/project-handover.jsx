@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ProjectHandover() {
@@ -25,16 +26,15 @@ export default function ProjectHandover() {
   const [editingId, setEditingId] = useState(null);
   const [records, setRecords] = useState([]);
   const [selectedRecord, setSelectedRecord] = useState(null);
+  const navigate = useNavigate();
 
   const viewRecord = (row) => {
-    console.log(row);
-    setSelectedRecord(row);
 
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
+    navigate("/project-handover-report", {
+        state: row
     });
-  };
+
+  };  
 
 
   const editRecord = (row) => {

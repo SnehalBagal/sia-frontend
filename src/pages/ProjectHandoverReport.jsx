@@ -1,4 +1,5 @@
 import logo from "../assets/logo.png";
+import { useLocation } from "react-router-dom";
 
 export default function ProjectHandoverReport() {
 
@@ -51,22 +52,22 @@ export default function ProjectHandoverReport() {
 
                     <tr>
                         <td><b>Project Name</b></td>
-                        <td>Demo Project</td>
+                        <td>{data?.project_name}</td>
                     </tr>
 
                     <tr>
                         <td><b>Customer</b></td>
-                        <td>Demo Customer</td>
+                        <td>{data?.customer_name}</td>
                     </tr>
 
                     <tr>
                         <td><b>Engineer</b></td>
-                        <td>Admin</td>
+                        <td>{data?.engineer}</td>
                     </tr>
 
                     <tr>
                         <td><b>Completion Date</b></td>
-                        <td>05-08-2026</td>
+                        <td>{data?.completion_date}</td>
                     </tr>
 
                 </tbody>
