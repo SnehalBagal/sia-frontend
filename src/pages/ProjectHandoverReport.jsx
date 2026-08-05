@@ -55,6 +55,25 @@ export default function ProjectHandoverReport() {
                             PROJECT HANDOVER REPORT
                         </h2>
 
+                        <p
+                            style={{
+                                margin: "8px 0 0 0",
+                                fontSize: "14px",
+                                color: "#555"
+                            }}
+                        >
+                            Sr. No. 60, Sai Nagar, Kondhwa Budruk,
+                            Pune - 411048
+
+                            <br />
+
+                            Email : info@kpaindia.co.in
+
+                            <br />
+
+                            Website : www.kpaindia.co.in
+                        </p>
+
                     </div>
 
                 </div>
@@ -232,6 +251,154 @@ export default function ProjectHandoverReport() {
             <tr>
                 <td><b>Project File</b></td>
                 <td>{data?.project_file_name}</td>
+            </tr>
+
+            </tbody>
+
+            </table>
+
+            <hr />
+
+            <h3>Communication Details</h3>
+
+            <table
+                border="1"
+                cellPadding="10"
+                width="100%"
+                style={{ borderCollapse: "collapse" }}
+            >
+
+            <tbody>
+
+            <tr>
+                <td><b>Communication Type</b></td>
+                <td>{data?.communication_type}</td>
+            </tr>
+
+            </tbody>
+
+            </table>
+
+            <hr />
+
+            <h3>SCADA Details</h3>
+
+            <table
+                border="1"
+                cellPadding="10"
+                width="100%"
+                style={{ borderCollapse: "collapse" }}
+            >
+
+            <tbody>
+
+            <tr>
+                <td><b>SCADA Name</b></td>
+                <td>{data?.scada_name}</td>
+            </tr>
+
+            <tr>
+                <td><b>SCADA Version</b></td>
+                <td>{data?.scada_version}</td>
+            </tr>
+
+            <tr>
+                <td><b>SCADA IP</b></td>
+                <td>{data?.scada_ip}</td>
+            </tr>
+
+            <tr>
+                <td><b>SCADA Password</b></td>
+                <td>{data?.scada_password}</td>
+            </tr>
+
+            </tbody>
+
+            </table>
+
+            <hr />
+
+            <h3>Network Configuration</h3>
+
+            <table
+                border="1"
+                cellPadding="10"
+                width="100%"
+                style={{ borderCollapse: "collapse" }}
+            >
+
+            <tbody>
+
+            <tr>
+                <td><b>PLC IP Address</b></td>
+                <td>{data?.plc_ip}</td>
+            </tr>
+
+            <tr>
+                <td><b>HMI IP Address</b></td>
+                <td>{data?.hmi_ip}</td>
+            </tr>
+
+            <tr>
+                <td><b>SCADA PC IP</b></td>
+                <td>{data?.scada_pc_ip}</td>
+            </tr>
+
+            <tr>
+                <td><b>Gateway</b></td>
+                <td>{data?.gateway}</td>
+            </tr>
+
+            <tr>
+                <td><b>Subnet Mask</b></td>
+                <td>{data?.subnet_mask}</td>
+            </tr>
+
+            <tr>
+                <td><b>DNS Server</b></td>
+                <td>{data?.dns_server}</td>
+            </tr>
+
+            </tbody>
+
+            </table>
+
+            <hr />
+
+            <h3>Commissioning Report</h3>
+
+            <table
+                border="1"
+                cellPadding="10"
+                width="100%"
+                style={{ borderCollapse: "collapse" }}
+            >
+
+            <tbody>
+
+            <tr>
+                <td width="30%"><b>Problem Found During Commissioning</b></td>
+                <td>{data?.commissioning_problem}</td>
+            </tr>
+
+            <tr>
+                <td><b>Solution Provided</b></td>
+                <td>{data?.solution}</td>
+            </tr>
+
+            <tr>
+                <td><b>Pending Work</b></td>
+                <td>{data?.pending_work}</td>
+            </tr>
+
+            <tr>
+                <td><b>Engineer Notes</b></td>
+                <td>{data?.engineer_notes}</td>
+            </tr>
+
+            <tr>
+                <td><b>Customer Notes</b></td>
+                <td>{data?.customer_notes}</td>
             </tr>
 
             </tbody>
