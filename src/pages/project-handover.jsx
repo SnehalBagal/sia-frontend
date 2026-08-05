@@ -25,6 +25,18 @@ export default function ProjectHandover() {
   const [editingId, setEditingId] = useState(null);
   const [records, setRecords] = useState([]);
 
+  const viewRecord = (row) => {
+
+    setSelectedRecord(row);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    };
+
+
   const editRecord = (row) => {
 
     console.log("Edit clicked", row);
@@ -137,6 +149,8 @@ const loadRecords = async () => {
     );
 
     alert("Project Handover Saved");
+    loadRecords();
+    clearForm();
 
 } else {
 
@@ -152,7 +166,8 @@ const loadRecords = async () => {
 
     alert("Project Handover Updated");
 
-    setEditingId(null);
+    loadRecords();
+    clearForm();
 }
 
         loadRecords();
@@ -163,6 +178,31 @@ const loadRecords = async () => {
         alert("Failed to Save");
 
     }
+};
+
+
+  const clearForm = () => {
+    setEditingId(null);
+
+    setProjectName("");
+    setCustomerName("");
+    setEngineer(localStorage.getItem("username"));
+    setCompletionDate("");
+
+    setPlcBrand("");
+    setPlcModel("");
+    setPlcIp("");
+    setPlcPassword("");
+    setPlcCpuPartNumber("");
+    setPlcFirmwareVersion("");
+    setRackSlot("");
+    setPlcSerialNumber("");
+
+    setCommissioningProblem("");
+    setSolution("");
+    setPendingWork("");
+    setEngineerNotes("");
+    setCustomerNotes("");
 };
       
       
@@ -584,12 +624,16 @@ const loadRecords = async () => {
 
                       <td>
 
+                        <button onClick={() => viewRecord(row)}>
+                          View
+                        </button>
+
                         <button onClick={() => editRecord(row)}>
-                            Edit
+                          Edit
                         </button>
 
                         <button onClick={() => deleteRecord(row.id)}>
-                            Delete
+                          Delete
                         </button>
 
                       </td>
