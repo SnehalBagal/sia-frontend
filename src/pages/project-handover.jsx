@@ -24,17 +24,17 @@ export default function ProjectHandover() {
   const [plcSerialNumber, setPlcSerialNumber] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [records, setRecords] = useState([]);
+  const [selectedRecord, setSelectedRecord] = useState(null);
 
   const viewRecord = (row) => {
-
+    console.log(row);
     setSelectedRecord(row);
 
     window.scrollTo({
-        top: 0,
+        top: document.body.scrollHeight,
         behavior: "smooth"
     });
-
-    };
+  };
 
 
   const editRecord = (row) => {
@@ -647,6 +647,78 @@ const loadRecords = async () => {
       </tbody>
 
   </table>
+  {selectedRecord && (
+
+  <div
+    style={{
+        marginTop: "30px",
+        padding: "20px",
+        border: "1px solid #ccc",
+        borderRadius: "10px",
+        background: "#fff"
+    }}
+  >
+
+  <h2>Project Handover Report</h2>
+  <button
+    onClick={() => window.print()}
+    style={{
+        padding: "10px 20px",
+        marginBottom: "20px",
+        cursor: "pointer"
+    }}
+  >
+    Print / Save PDF
+  </button>
+
+  <hr />
+
+  <h3>Project Information</h3>
+
+  <p><b>Project Name:</b> {selectedRecord.project_name}</p>
+  <p><b>Customer:</b> {selectedRecord.customer_name}</p>
+  <p><b>Engineer:</b> {selectedRecord.engineer}</p>
+  <p><b>Completion Date:</b> {selectedRecord.completion_date}</p>
+
+  <hr />
+
+  <h3>PLC Details</h3>
+
+  <p><b>PLC Brand:</b> {selectedRecord.plc_brand}</p>
+  <p><b>PLC Model:</b> {selectedRecord.plc_model}</p>
+  <p><b>PLC IP:</b> {selectedRecord.plc_ip}</p>
+  <p><b>PLC Password:</b> {selectedRecord.plc_password}</p>
+  <p><b>CPU Part Number:</b> {selectedRecord.plc_cpu_part_number}</p>
+  <p><b>Firmware Version:</b> {selectedRecord.plc_firmware_version}</p>
+  <p><b>Rack Slot:</b> {selectedRecord.rack_slot}</p>
+  <p><b>Serial Number:</b> {selectedRecord.plc_serial_number}</p>
+
+  <hr />
+
+  <h3>Commissioning Report</h3>
+
+  <p><b>Problem:</b></p>
+  <p>{selectedRecord.commissioning_problem}</p>
+
+  <p><b>Solution:</b></p>
+  <p>{selectedRecord.solution}</p>
+
+  <p><b>Pending Work:</b></p>
+  <p>{selectedRecord.pending_work}</p>
+
+  <p><b>Engineer Notes:</b></p>
+  <p>{selectedRecord.engineer_notes}</p>
+
+  <p><b>Customer Notes:</b></p>
+  <p>{selectedRecord.customer_notes}</p>
+
+  </div>
+
+  )}
+
+
+
+
       </div>
 
     </div>
