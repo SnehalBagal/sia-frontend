@@ -27,6 +27,22 @@ export default function ProjectHandover() {
   const [records, setRecords] = useState([]);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const navigate = useNavigate();
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+
+    const res = await axios.get(
+        "https://sia-backend-khcp.onrender.com/projects-list"
+    );
+
+    setProjects(res.data);
+
+  };
+
 
   const viewRecord = (row) => {
 
@@ -233,11 +249,29 @@ const loadRecords = async () => {
 
           <h2>Project Information</h2>
 
-          <input
-            placeholder="Project Name"
+          <select
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
-          />
+          >
+
+          <option value="">
+            Select Project
+          </option>
+
+          {projects.map((project) => (
+
+          <option
+            key={project.id}
+            value={project.project_name}
+          >
+
+          {project.project_name}
+
+          </option>
+
+          ))}
+
+          </select>
 
           <input
             placeholder="Customer Name"
