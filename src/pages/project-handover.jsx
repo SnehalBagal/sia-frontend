@@ -126,35 +126,34 @@ const loadRecords = async () => {
 
         if (editingId === null) {
 
-            await axios.post(
-                await axios.post(
-                  "https://sia-backend-khcp.onrender.com/project-handover",
-                data,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-
-            alert("Project Handover Saved");
-
-        } else {
-
-            await axios.put(
-                `https://sia-backend-khcp.onrender.com/project-handover/${editingId}`,
-                data,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-
-            alert("Project Handover Updated");
-
-            setEditingId(null);
+    await axios.post(
+        "https://sia-backend-khcp.onrender.com/project-handover",
+        data,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         }
+    );
+
+    alert("Project Handover Saved");
+
+} else {
+
+    await axios.put(
+        `https://sia-backend-khcp.onrender.com/project-handover/${editingId}`,
+        data,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    alert("Project Handover Updated");
+
+    setEditingId(null);
+}
 
         loadRecords();
 
