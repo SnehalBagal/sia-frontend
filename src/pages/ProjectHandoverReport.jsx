@@ -78,6 +78,63 @@ export default function ProjectHandoverReport() {
 
             </table>
 
+            <hr />
+
+            <h3>PLC Details</h3>
+
+            <table
+                border="1"
+                cellPadding="10"
+                width="100%"
+                style={{ borderCollapse: "collapse" }}
+            >
+
+            <tbody>
+
+            <tr>
+                <td><b>PLC Brand</b></td>
+                <td>{data?.plc_brand}</td>
+            </tr>
+
+            <tr>
+                <td><b>PLC Model</b></td>
+                <td>{data?.plc_model}</td>
+            </tr>
+
+            <tr>
+                <td><b>PLC IP</b></td>
+                <td>{data?.plc_ip}</td>
+            </tr>
+
+            <tr>
+                <td><b>PLC Password</b></td>
+                <td>{data?.plc_password}</td>
+            </tr>
+
+            <tr>
+                <td><b>CPU Part Number</b></td>
+                <td>{data?.plc_cpu_part_number}</td>
+            </tr>
+
+            <tr>
+                <td><b>Firmware Version</b></td>
+                <td>{data?.plc_firmware_version}</td>
+            </tr>
+
+            <tr>
+                <td><b>Rack / Slot</b></td>
+                <td>{data?.rack_slot}</td>
+            </tr>
+
+            <tr>
+                <td><b>PLC Serial Number</b></td>
+                <td>{data?.plc_serial_number}</td>
+            </tr>
+
+            </tbody>
+
+            </table>
+
             <br />
 
             <button
