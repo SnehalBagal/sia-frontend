@@ -24,20 +24,71 @@ export default function ProjectHandoverReport() {
                 }}
             >
 
-                <img
-                    src={logo}
-                    alt="Logo"
+                
+
+                <div
                     style={{
-                        width: "120px",
-                        marginBottom: "15px"
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        borderBottom: "3px solid black",
+                        paddingBottom: "15px",
+                        marginBottom: "25px"
                     }}
-                />
+                >
 
-                <h1>KPA INDIA SOLUTIONS</h1>
+                    <img
+                        src={logo}
+                        alt="Logo"
+                        style={{
+                            width: "90px"
+                        }}
+                    />
 
-                <h2>PROJECT HANDOVER REPORT</h2>
+                    <div style={{ textAlign: "center", flex: 1 }}>
 
-                <hr />
+                        <h1 style={{ margin: 0 }}>
+                            KPA INDIA SOLUTIONS
+                        </h1>
+
+                        <h2 style={{ margin: 0 }}>
+                            PROJECT HANDOVER REPORT
+                        </h2>
+
+                    </div>
+
+                </div>
+
+                <table
+                    width="100%"
+                    style={{
+                        marginBottom: "25px"
+                    }}
+                >
+
+                <tbody>
+
+                <tr>
+
+                <td>
+                <b>Report No :</b>
+
+                PH-{data?.id}
+                </td>
+
+                <td style={{ textAlign: "right" }}>
+
+                <b>Date :</b>
+
+                {data?.completion_date}
+
+                </td>
+
+                </tr>
+
+                </tbody>
+
+                </table>
 
             </div>
 
@@ -135,6 +186,106 @@ export default function ProjectHandoverReport() {
 
             </table>
 
+            <hr />
+
+            <h3>HMI Details</h3>
+
+            <table
+                border="1"
+                cellPadding="10"
+                width="100%"
+                style={{ borderCollapse: "collapse" }}
+            >
+
+            <tbody>
+
+            <tr>
+                <td><b>HMI Brand</b></td>
+                <td>{data?.hmi_brand}</td>
+            </tr>
+
+            <tr>
+                <td><b>HMI Model</b></td>
+                <td>{data?.hmi_model}</td>
+            </tr>
+
+            <tr>
+                <td><b>HMI IP</b></td>
+                <td>{data?.hmi_ip}</td>
+            </tr>
+
+            <tr>
+                <td><b>HMI Password</b></td>
+                <td>{data?.hmi_password}</td>
+            </tr>
+
+            <tr>
+                <td><b>Runtime Username</b></td>
+                <td>{data?.runtime_username}</td>
+            </tr>
+
+            <tr>
+                <td><b>Runtime Password</b></td>
+                <td>{data?.runtime_password}</td>
+            </tr>
+
+            <tr>
+                <td><b>Project File</b></td>
+                <td>{data?.project_file_name}</td>
+            </tr>
+
+            </tbody>
+
+            </table>
+
+            <hr style={{ marginTop: "40px" }} />
+
+            <table
+                width="100%"
+                style={{
+                    marginTop: "50px",
+                    textAlign: "center"
+                }}
+            >
+
+            <tbody>
+
+            <tr>
+
+            <td>
+            <b>Prepared By</b>
+            </td>
+
+            <td>
+            <b>Customer</b>
+            </td>
+
+            <td>
+            <b>Approved By</b>
+            </td>
+
+            </tr>
+
+            <tr>
+
+            <td style={{ paddingTop: "60px" }}>
+            _____________________
+            </td>
+
+            <td style={{ paddingTop: "60px" }}>
+            _____________________
+            </td>
+
+            <td style={{ paddingTop: "60px" }}>
+            _____________________
+            </td>
+
+            </tr>
+
+            </tbody>
+
+            </table>
+
             <br />
 
             <button
@@ -148,6 +299,11 @@ export default function ProjectHandoverReport() {
             </button>
 
         </div>
+
+        
+
+
+
 
     );
 
