@@ -127,7 +127,8 @@ const loadRecords = async () => {
         if (editingId === null) {
 
             await axios.post(
-                "https://sia-backend-khcp.onrender.com/create-project-handover",
+                await axios.post(
+                  "https://sia-backend-khcp.onrender.com/project-handover",
                 data,
                 {
                     headers: {
