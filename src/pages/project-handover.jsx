@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
-import ProjectHandoverList from "./ProjectHandoverList";
+
 
 export default function ProjectHandover() {
 
@@ -22,54 +22,150 @@ export default function ProjectHandover() {
   const [plcFirmwareVersion, setPlcFirmwareVersion] = useState("");
   const [rackSlot, setRackSlot] = useState("");
   const [plcSerialNumber, setPlcSerialNumber] = useState("");
+  const [editingId, setEditingId] = useState(null);
+  const [records, setRecords] = useState([]);
+
+  const editRecord = (row) => {
+
+    console.log("Edit clicked", row);
+
+    setEditingId(row.id);
+  
+    
+
+    setProjectName(row.project_name || "");
+    setCustomerName(row.customer_name || "");
+    setEngineer(row.engineer || "");
+    setCompletionDate(row.completion_date || "");
+
+    setPlcBrand(row.plc_brand || "");
+    setPlcModel(row.plc_model || "");
+    setPlcIp(row.plc_ip || "");
+    setPlcPassword(row.plc_password || "");
+
+    setPlcCpuPartNumber(row.plc_cpu_part_number || "");
+    setPlcFirmwareVersion(row.plc_firmware_version || "");
+    setRackSlot(row.rack_slot || "");
+    setPlcSerialNumber(row.plc_serial_number || "");
+
+    setCommissioningProblem(row.commissioning_problem || "");
+    setSolution(row.solution || "");
+    setPendingWork(row.pending_work || "");
+    setEngineerNotes(row.engineer_notes || "");
+    setCustomerNotes(row.customer_notes || "");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+};
+
+  useEffect(() => {
+    loadRecords();
+}, []);
+
+const loadRecords = async () => {
+    try {
+        const res = await axios.get(
+            "https://sia-backend-khcp.onrender.com/project-handover"
+        );
+        setRecords(res.data);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+
+  const deleteRecord = async (id) => {
+
+    if (!window.confirm("Delete this record?")) return;
+
+    try {
+        await axios.delete(
+            `https://sia-backend-khcp.onrender.com/project-handover/${id}`
+        );
+
+        alert("Deleted Successfully");
+        loadRecords();
+
+    } catch (err) {
+        console.log(err);
+        alert("Delete Failed");
+    }
+};
 
 
   const saveProjectHandover = async () => {
 
-  try {
+    try {
 
-    const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-    await axios.post(
-      "https://sia-backend-khcp.onrender.com/create-project-handover",
-      {
-        project_name: projectName,
-        customer_name: customerName,
-        engineer: engineer,
-        completion_date: completionDate,
-        plc_brand: plcBrand,
-        plc_model: plcModel,
-        plc_ip: plcIp,
-        plc_password: plcPassword,
-        plc_cpu_part_number: plcCpuPartNumber,
-        plc_firmware_version: plcFirmwareVersion,
-        rack_slot: rackSlot,
-        plc_serial_number: plcSerialNumber,
+        const data = {
+            project_name: projectName,
+            customer_name: customerName,
+            engineer: engineer,
+            completion_date: completionDate,
 
-        commissioning_problem: commissioningProblem,
-        solution: solution,
-        pending_work: pendingWork,
-        engineer_notes: engineerNotes,
-        customer_notes: customerNotes
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
+            plc_brand: plcBrand,
+            plc_model: plcModel,
+            plc_ip: plcIp,
+            plc_password: plcPassword,
+            plc_cpu_part_number: plcCpuPartNumber,
+            plc_firmware_version: plcFirmwareVersion,
+            rack_slot: rackSlot,
+            plc_serial_number: plcSerialNumber,
+
+            commissioning_problem: commissioningProblem,
+            solution: solution,
+            pending_work: pendingWork,
+            engineer_notes: engineerNotes,
+            customer_notes: customerNotes
+        };
+
+        if (editingId === null) {
+
+            await axios.post(
+                "https://sia-backend-khcp.onrender.com/create-project-handover",
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            alert("Project Handover Saved");
+
+        } else {
+
+            await axios.put(
+                `https://sia-backend-khcp.onrender.com/project-handover/${editingId}`,
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            alert("Project Handover Updated");
+
+            setEditingId(null);
         }
-      }
-    );
 
-    alert("Project Handover Saved");
+        loadRecords();
 
-  } catch (err) {
+    } catch (err) {
 
-    console.log(err);
+        console.log(err);
+        alert("Failed to Save");
 
-    alert("Failed to Save");
-
-  }
-
+    }
 };
+      
+      
 
 
 
@@ -437,7 +533,9 @@ export default function ProjectHandover() {
               fontSize: "16px"
             }}
           >
-            Save Project Handover
+            {editingId === null
+              ? "Save Project Handover"
+              : "Update Project Handover"}
           </button>
 
           </div>
@@ -445,8 +543,66 @@ export default function ProjectHandover() {
             </div>
 
           {/* Project Handover Records */}
-          <ProjectHandoverList />
 
+          <h2 style={{ marginTop: "40px" }}>Project Handover Records</h2>
+
+          <table border="1" cellPadding="8" style={{ width: "100%" }}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Project</th>
+                <th>Customer</th>
+                <th>Engineer</th>
+                <th>Date</th>
+                <th>PLC Brand</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {records.length === 0 ? (
+
+                <tr>
+                  <td colSpan="7" style={{ textAlign: "center" }}>
+                    No Records Found
+                  </td>
+                </tr>
+
+              ) : (
+
+                  records.map((row) => (
+
+                    <tr key={row.id}>
+
+                      <td>{row.id}</td>
+                      <td>{row.project_name}</td>
+                      <td>{row.customer_name}</td>
+                      <td>{row.engineer}</td>
+                      <td>{row.completion_date}</td>
+                      <td>{row.plc_brand}</td>
+
+                      <td>
+
+                        <button onClick={() => editRecord(row)}>
+                            Edit
+                        </button>
+
+                        <button onClick={() => deleteRecord(row.id)}>
+                            Delete
+                        </button>
+
+                      </td>
+
+                  </tr>
+
+              ))
+
+          )}
+
+      </tbody>
+
+  </table>
       </div>
 
     </div>
