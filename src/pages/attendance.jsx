@@ -142,32 +142,39 @@ const filteredRecords = Array.isArray(records)
   : [];
 
 const deleteAttendance = async (attendanceId) => {
-  if (!window.confirm("Are you sure you want to delete this attendance record?")) {
-    return;
-  }
 
-  try {
-    const token = localStorage.getItem("token");
+    if (!window.confirm("Are you sure you want to delete this attendance record?")) {
+        return;
+    }
 
-    await axios.delete(
-      `https://sia-backend-khcp.onrender.com/attendance/${attendanceId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    try {
 
-    alert("Attendance deleted");
+        const token = localStorage.getItem("token");
 
-    setRecords((prev) =>
-      prev.filter((item) => item.id !== attendanceId)
-    );
+        console.log("TOKEN EXISTS:", !!token);
 
-  } catch (err) {
-    console.log(err);
-    alert("Failed to delete attendance");
-  }
+        await axios.delete(
+            `https://sia-backend-khcp.onrender.com/attendance/${attendanceId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        alert("Attendance deleted");
+
+        setRecords((prev) =>
+            prev.filter((item) => item.id !== attendanceId)
+        );
+
+    } catch (err) {
+
+        console.log("DELETE ERROR:", err.response?.data || err);
+
+        alert("Failed to delete attendance");
+
+    }
 };  
 
 
@@ -196,16 +203,25 @@ const deleteSelected = async () => {
         return;
     }
 
-    if (!window.confirm(`Delete ${selectedRows.length} selected records?`)) {
+    if (!window.confirm(
+        `Delete ${selectedRows.length} selected records?`
+    )) {
         return;
     }
 
     try {
 
+        const token = localStorage.getItem("token");
+
         for (const id of selectedRows) {
 
             await axios.delete(
-                `https://sia-backend-khcp.onrender.com/attendance/${id}`
+                `https://sia-backend-khcp.onrender.com/attendance/${id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
             );
 
         }
@@ -214,12 +230,15 @@ const deleteSelected = async () => {
 
         setSelectedRows([]);
 
-        // reload attendance
         fetchAttendance();
 
     } catch (err) {
 
-        console.error(err);
+        console.log(
+            "MULTI DELETE ERROR:",
+            err.response?.data || err
+        );
+
         alert("Failed to delete selected records");
 
     }
