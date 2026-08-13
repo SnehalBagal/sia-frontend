@@ -105,7 +105,7 @@ const updateWorkReport = async (attendanceId, workReport) => {
   const token = localStorage.getItem("token");
 
   await axios.put(
-    "https://sia-backend-khcp.onrender.com/attendance-work/${attendanceId}",
+    `https://sia-backend-khcp.onrender.com/attendance-work/${attendanceId}`,
     null,
     {
       params: {
@@ -180,11 +180,13 @@ const toggleRow = (id) => {
 };
 
 const toggleSelectAll = () => {
-    if (selectedRows.length === records.length) {
+
+    if (selectedRows.length === filteredRecords.length) {
         setSelectedRows([]);
     } else {
-        setSelectedRows(records.map((row) => row.id));
+        setSelectedRows(filteredRecords.map((record) => record.id));
     }
+
 };
 
 const deleteSelected = async () => {
@@ -213,7 +215,7 @@ const deleteSelected = async () => {
         setSelectedRows([]);
 
         // reload attendance
-        loadAttendance();
+        fetchAttendance();
 
     } catch (err) {
 
@@ -329,8 +331,8 @@ const deleteSelected = async () => {
               <td>
                 <input
                   type="checkbox"
-                  checked={selectedRows.includes(row.id)}
-                  onChange={() => toggleRow(row.id)}
+                  checked={selectedRows.includes(record.id)}
+                  onChange={() => toggleRow(record.id)}
                 />
               </td>
               <td>{record.username}</td>
