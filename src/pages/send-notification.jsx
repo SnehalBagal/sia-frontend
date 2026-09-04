@@ -48,6 +48,9 @@ export default function SendNotification() {
         }
       );
 
+      console.log("EMPLOYEES API RESPONSE =", res.data);
+      console.log("IS ARRAY =", Array.isArray(res.data));
+
       setEmployees(Array.isArray(res.data) ? res.data : []);
 
     } catch (err) {
