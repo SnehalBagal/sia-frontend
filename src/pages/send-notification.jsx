@@ -41,7 +41,7 @@ export default function SendNotification() {
 
       const res = await axios.get(
         "https://sia-backend-khcp.onrender.com/employees",
-        { 
+        {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -57,10 +57,6 @@ export default function SendNotification() {
       console.log("Employee fetch error:", err);
     }
   };
-
-
-
-
   return (
     <div>
       <Sidebar />
@@ -77,7 +73,7 @@ export default function SendNotification() {
             fontSize: "16px"
           }}
         >
-          <option value="">Select Employee</option>
+          <option value="">Select Name</option>
 
           {employees.map((employee) => (
             <option
