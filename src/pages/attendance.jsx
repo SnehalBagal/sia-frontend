@@ -102,22 +102,44 @@ const res = await axios.get(
 
 const updateWorkReport = async (attendanceId, workReport) => {
 
-  const token = localStorage.getItem("token");
+  try {
 
-  await axios.put(
-    `https://sia-backend-khcp.onrender.com/attendance-work/${attendanceId}`,
-    null,
-    {
-      params: {
-        work_report: workReport
-      },
-      headers: {
-        Authorization: `Bearer ${token}`
+    const token = localStorage.getItem("token");
+
+    await axios.put(
+      `https://sia-backend-khcp.onrender.com/attendance-work/${attendanceId}`,
+      null,
+      {
+        params: {
+          work_report: workReport
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    }
-  );
+    );
 
-  alert("Work report saved");
+    // Update current screen
+    setRecords((prev) =>
+      prev.map((record) =>
+        record.id === attendanceId
+          ? { ...record, work_report: workReport }
+          : record
+      )
+    );
+
+    alert("Work report saved");
+
+  } catch (err) {
+
+    console.log(
+      "WORK REPORT ERROR:",
+      err.response?.data || err
+    );
+
+    alert("Failed to save work report");
+
+  }
 };
 
 
