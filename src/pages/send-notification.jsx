@@ -9,27 +9,58 @@ export default function SendNotification() {
   const [employees, setEmployees] = useState([]);
 
   const sendNotification = async () => {
-  try {
-    const payload = {
-      to_user: username,
-      sender_name: localStorage.getItem("username") || "Unknown",
-      message: message,
-      type: type
-    };
+    if (!username) {
+      alert("Please select a name");
+      return;
+    }
 
-    console.log("Notification payload:", payload);
+    if (!message.trim()) {
+      alert("Please enter a message");
+      return;
+    }
 
-    await axios.post(
-      "https://sia-backend-khcp.onrender.com/notifications",
-      payload
-    );
+    try {
+      const payload = {
+        to_user: username,
+        sender_name: localStorage.getItem("username") || "Unknown",
+        message: message,
+        type: type
+      };
 
-    alert("Notification sent");
-  } catch (err) {
-    console.log("ERROR DETAILS:", err.response?.data || err);
-    alert("Notification failed");
-  }
-};
+      console.log("Notification payload:", payload);
+
+      const res = await axios.post(
+        "https://sia-backend-khcp.onrender.com/notifications",
+        payload
+      );
+
+      console.log("Notification response:", res.data);
+
+      if (username === "ALL") {
+        alert(
+          `Notification sent to ${res.data.count || "all"} active employees`
+        );
+      } else {
+        alert("Notification sent");
+      }
+
+      // Clear form after successful send
+      setUsername("");
+      setMessage("");
+      setType("");
+
+    } catch (err) {
+      console.log(
+        "ERROR DETAILS:",
+        err.response?.data || err
+      );
+
+      alert(
+        err.response?.data?.detail ||
+        "Notification failed"
+      );
+    }
+  };
 
   useEffect(() => {
     fetchEmployees();
@@ -49,32 +80,62 @@ export default function SendNotification() {
       );
 
       console.log("EMPLOYEES API RESPONSE =", res.data);
-      console.log("IS ARRAY =", Array.isArray(res.data));
 
-      setEmployees(Array.isArray(res.data) ? res.data : []);
+      const activeEmployees = Array.isArray(res.data)
+        ? res.data.filter(
+            (employee) =>
+              employee.status === "Active"
+          )
+        : [];
+
+      console.log(
+        "ACTIVE EMPLOYEES =",
+        activeEmployees
+      );
+
+      setEmployees(activeEmployees);
 
     } catch (err) {
-      console.log("Employee fetch error:", err);
+      console.log(
+        "Employee fetch error:",
+        err
+      );
     }
   };
+
   return (
     <div>
       <Sidebar />
 
-      <div style={{ marginLeft: "240px", padding: "40px" }}>
+      <div
+        style={{
+          marginLeft: "240px",
+          padding: "40px"
+        }}
+      >
         <h1>Send Notification</h1>
 
         <select
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) =>
+            setUsername(e.target.value)
+          }
           style={{
             width: "212px",
             padding: "8px",
             fontSize: "16px"
           }}
         >
-          <option value="">Select Name</option>
+          <option value="">
+            Select Name
+          </option>
 
+          {/* SEND TO EVERYONE */}
+          <option value="ALL">
+            All
+          </option>
+
+          {/* ACTIVE EMPLOYEES ONLY */}
           {employees.map((employee) => (
             <option
               key={employee.id}
@@ -84,23 +145,35 @@ export default function SendNotification() {
             </option>
           ))}
         </select>
-        <br /><br />
+
+        <br />
+        <br />
 
         <input
           placeholder="Notification Type"
           value={type}
-          onChange={(e) => setType(e.target.value)}
+          onChange={(e) =>
+            setType(e.target.value)
+          }
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <textarea
           placeholder="Message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) =>
+            setMessage(e.target.value)
+          }
+          style={{
+            width: "300px",
+            minHeight: "100px"
+          }}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <button onClick={sendNotification}>
           Send Notification
